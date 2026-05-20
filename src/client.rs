@@ -48,7 +48,7 @@ use hbb_common::{
     bail,
     config::{
         self, keys, use_ws, Config, LocalConfig, PeerConfig, PeerInfoSerde, Resolution,
-        CONNECT_TIMEOUT, READ_TIMEOUT, RELAY_PORT, RENDEZVOUS_PORT, RENDEZVOUS_SERVERS,
+        CONNECT_TIMEOUT, READ_TIMEOUT, RELAY_PORT, RENDEZVOUS_PORT,
     },
     fs::JobType,
     futures::future::{select_ok, FutureExt},
@@ -293,9 +293,10 @@ impl Client {
             crate::get_rendezvous_server(1_000).await
         } else {
             if other_server == PUBLIC_SERVER {
+                let servers = Config::get_rendezvous_servers();
                 (
-                    check_port(RENDEZVOUS_SERVERS[0], RENDEZVOUS_PORT),
-                    RENDEZVOUS_SERVERS[1..]
+                    check_port(&servers[0], RENDEZVOUS_PORT),
+                    servers[1..]
                         .iter()
                         .map(|x| x.to_string())
                         .collect(),
@@ -314,7 +315,7 @@ impl Client {
         let udp =
         // no need to care about multiple rendezvous servers case, since it is acutally not used any more.
         // Shared state for UDP NAT test result
-        if crate::get_udp_punch_enabled() && !interface.is_force_relay() {
+        if crate::get_udp_punch_enabled() && !interface.is_force_relay() && !use_ws() {
             if let Ok((socket, addr)) = new_direct_udp_for(&rendezvous_server).await {
                 let udp_port = Arc::new(Mutex::new(0));
                 let up_cloned = udp_port.clone();
@@ -418,7 +419,7 @@ impl Client {
         let mut is_local = false;
         let mut feedback = 0;
         use hbb_common::protobuf::Enum;
-        let nat_type = if interface.is_force_relay() {
+        let nat_type = if interface.is_force_relay() || use_ws() {
             NatType::SYMMETRIC
         } else {
             NatType::from_i32(my_nat_type).unwrap_or(NatType::UNKNOWN_NAT)
@@ -445,6 +446,31 @@ impl Client {
         }
         // Stop UDP NAT test task if still running
         stop_udp_tx.map(|tx| tx.send(()));
+        if interface.is_force_relay() || use_ws() {
+            let relay_server = Self::resolve_relay_server("", &rendezvous_server);
+            log::info!(
+                "force relay active; requesting relay directly, relay_server: {}",
+                relay_server
+            );
+            drop(socket);
+            let (mut conn, signed_id_pk) = Self::request_relay(
+                &peer,
+                relay_server,
+                &rendezvous_server,
+                false,
+                &key,
+                &token,
+                conn_type,
+            )
+            .await?;
+            let typ = if use_ws() { "WebSocket" } else { "Relay" };
+            let pk = Self::secure_connection(&peer, signed_id_pk, &key, &mut conn).await?;
+            return Ok((
+                (conn, false, pk, None, typ),
+                (feedback, rendezvous_server),
+                false,
+            ));
+        }
         let mut msg_out = RendezvousMessage::new();
         let mut ipv6 = if crate::get_ipv6_punch_enabled() {
             if let Some((socket, addr)) = crate::get_ipv6_socket().await {
@@ -465,7 +491,7 @@ impl Client {
             conn_type: conn_type.into(),
             version: crate::VERSION.to_owned(),
             udp_port: udp_nat_port as _,
-            force_relay: interface.is_force_relay(),
+            force_relay: interface.is_force_relay() || use_ws(),
             socket_addr_v6: ipv6.1.unwrap_or_default(),
             ..Default::default()
         });
@@ -634,7 +660,7 @@ impl Client {
         local_addr: SocketAddr,
         peer: SocketAddr,
         peer_id: &str,
-        signed_id_pk: Vec<u8>,
+        mut signed_id_pk: Vec<u8>,
         relay_server: &str,
         rendezvous_server: &str,
         punch_time_used: u64,
@@ -690,52 +716,74 @@ impl Client {
         log::info!("peer address: {}, timeout: {}", peer, connect_timeout);
         let start = std::time::Instant::now();
 
-        let mut connect_futures = Vec::new();
-        let fut = connect_tcp_local(peer, Some(local_addr), connect_timeout);
-        connect_futures.push(
-            async move {
-                let conn = fut.await?;
-                Ok((conn, None, "TCP"))
-            }
-            .boxed(),
-        );
-        if let Some(udp_socket_nat) = udp_socket_nat {
-            connect_futures.push(udp_nat_connect(udp_socket_nat, "UDP", connect_timeout).boxed());
-        }
-        if let Some(udp_socket_v6) = udp_socket_v6 {
-            connect_futures.push(udp_nat_connect(udp_socket_v6, "IPv6", connect_timeout).boxed());
-        }
-        // Run all connection attempts concurrently, return the first successful one
-        let (mut conn, kcp, mut typ) = match select_ok(connect_futures).await {
-            Ok(conn) => (Ok(conn.0 .0), conn.0 .1, conn.0 .2),
-            Err(e) => (Err(e), None, ""),
-        };
-
-        let mut direct = !conn.is_err();
-        if interface.is_force_relay() || conn.is_err() {
-            if !relay_server.is_empty() {
-                conn = Self::request_relay(
+        let force_relay = interface.is_force_relay() || use_ws();
+        let (mut conn, kcp, mut typ, mut direct) = if force_relay {
+            let relay_server = Self::resolve_relay_server(relay_server, rendezvous_server);
+            (
+                Self::request_relay(
                     peer_id,
-                    relay_server.to_owned(),
+                    relay_server,
                     rendezvous_server,
                     !signed_id_pk.is_empty(),
                     key,
                     token,
                     conn_type,
                 )
-                .await;
-                if let Err(e) = conn {
-                    // this direct is mainly used by on_establish_connection_error, so we update it here before bail
-                    interface.update_direct(Some(false));
-                    bail!("Failed to connect via relay server: {}", e);
+                .await,
+                None,
+                if use_ws() { "WebSocket" } else { "Relay" },
+                false,
+            )
+        } else {
+            let mut connect_futures = Vec::new();
+            let fut = connect_tcp_local(peer, Some(local_addr), connect_timeout);
+            connect_futures.push(
+                async move {
+                    let conn = fut.await?;
+                    Ok((conn, None, "TCP"))
                 }
-                typ = "Relay";
-                direct = false;
-            } else {
-                bail!("Failed to make direct connection to remote desktop");
+                .boxed(),
+            );
+            if let Some(udp_socket_nat) = udp_socket_nat {
+                connect_futures
+                    .push(udp_nat_connect(udp_socket_nat, "UDP", connect_timeout).boxed());
             }
+            if let Some(udp_socket_v6) = udp_socket_v6 {
+                connect_futures
+                    .push(udp_nat_connect(udp_socket_v6, "IPv6", connect_timeout).boxed());
+            }
+            let (conn, kcp, typ) = match select_ok(connect_futures).await {
+                Ok(conn) => (Ok((conn.0 .0, Vec::new())), conn.0 .1, conn.0 .2),
+                Err(e) => (Err(e), None, ""),
+            };
+            (conn, kcp, typ, true)
+        };
+
+        if !force_relay && conn.is_err() {
+            let relay_server = Self::resolve_relay_server(relay_server, rendezvous_server);
+            conn = Self::request_relay(
+                peer_id,
+                relay_server,
+                rendezvous_server,
+                !signed_id_pk.is_empty(),
+                key,
+                token,
+                conn_type,
+            )
+            .await;
+            typ = "Relay";
+            direct = false;
         }
-        let mut conn = conn?;
+        let (mut conn, relay_pk) = match conn {
+            Ok(conn) => conn,
+            Err(e) => {
+                interface.update_direct(Some(false));
+                bail!("Failed to connect via relay server: {}", e);
+            }
+        };
+        if !relay_pk.is_empty() {
+            signed_id_pk = relay_pk;
+        }
         log::info!(
             "{:?} used to establish {typ} connection with {} punch",
             start.elapsed(),
@@ -752,6 +800,25 @@ impl Client {
         };
         log::debug!("{} punch secure_connection ok", punch_type);
         Ok((conn, direct, pk, kcp, typ))
+    }
+
+    fn resolve_relay_server(relay_server: &str, rendezvous_server: &str) -> String {
+        let relay_server = if relay_server.is_empty() {
+            Config::get_option("relay-server")
+        } else {
+            relay_server.to_owned()
+        };
+        if !relay_server.is_empty() {
+            return relay_server;
+        }
+        if !hbb_common::identity::RELAY_IP.is_empty() && hbb_common::identity::RELAY_PORT > 0 {
+            return format!(
+                "{}:{}",
+                hbb_common::identity::RELAY_IP,
+                hbb_common::identity::RELAY_PORT
+            );
+        }
+        crate::increase_port(rendezvous_server, 1)
     }
 
     /// Establish secure connection with the server.
@@ -842,10 +909,11 @@ impl Client {
         key: &str,
         token: &str,
         conn_type: ConnType,
-    ) -> ResultType<Stream> {
+    ) -> ResultType<(Stream, Vec<u8>)> {
         let mut succeed = false;
         let mut uuid = "".to_owned();
         let mut ipv4 = true;
+        let mut signed_id_pk = Vec::new();
 
         for i in 1..=3 {
             // use different socket due to current hbbs implementation requiring different nat address for each attempt
@@ -886,6 +954,7 @@ impl Client {
                     if !rs.refuse_reason.is_empty() {
                         bail!(rs.refuse_reason);
                     }
+                    signed_id_pk = rs.pk().into();
                     succeed = true;
                     break;
                 }
@@ -894,7 +963,8 @@ impl Client {
         if !succeed {
             bail!("Timeout");
         }
-        Self::create_relay(peer, uuid, relay_server, key, conn_type, ipv4).await
+        let conn = Self::create_relay(peer, uuid, relay_server, key, conn_type, ipv4).await?;
+        Ok((conn, signed_id_pk))
     }
 
     /// Create a relay connection to the server.
@@ -906,12 +976,16 @@ impl Client {
         conn_type: ConnType,
         ipv4: bool,
     ) -> ResultType<Stream> {
-        let mut conn = connect_tcp(
-            ipv4_to_ipv6(check_port(relay_server, RELAY_PORT), ipv4),
-            CONNECT_TIMEOUT,
-        )
-        .await
-        .with_context(|| "Failed to connect to relay server")?;
+        let relay_target = if use_ws() {
+            hbb_common::websocket::check_ws_relay(&relay_server)
+        } else {
+            ipv4_to_ipv6(check_port(relay_server, RELAY_PORT), ipv4)
+        };
+        println!("DEBUG: create_relay -> connecting to {}", relay_target);
+        log::info!("DEBUG: create_relay -> connecting to {}", relay_target);
+        let mut conn = connect_tcp(relay_target, CONNECT_TIMEOUT)
+            .await
+            .with_context(|| "Failed to connect to relay server")?;
         let mut msg_out = RendezvousMessage::new();
         msg_out.set_request_relay(RequestRelay {
             licence_key: key.to_owned(),

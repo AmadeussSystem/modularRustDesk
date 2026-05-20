@@ -1,0 +1,740 @@
+   Compiling proc-macro2 v1.0.93
+   Compiling unicode-ident v1.0.12
+   Compiling windows_x86_64_msvc v0.52.6
+   Compiling autocfg v1.3.0
+   Compiling shlex v1.3.0
+   Compiling serde_core v1.0.228
+   Compiling cfg-if v1.0.0
+   Compiling jobserver v0.1.31
+   Compiling serde v1.0.228
+   Compiling memchr v2.7.4
+   Compiling winapi v0.3.9
+   Compiling version_check v0.9.4
+   Compiling libc v0.2.171
+   Compiling crossbeam-utils v0.8.20
+   Compiling cc v1.2.13
+   Compiling windows-targets v0.52.6
+   Compiling windows-sys v0.52.0
+   Compiling parking_lot_core v0.9.10
+   Compiling typenum v1.17.0
+   Compiling lock_api v0.4.12
+   Compiling pkg-config v0.3.30
+   Compiling generic-array v0.14.7
+   Compiling regex-syntax v0.8.5
+   Compiling aho-corasick v1.1.3
+   Compiling quote v1.0.36
+   Compiling log v0.4.22
+   Compiling syn v2.0.98
+   Compiling either v1.13.0
+   Compiling once_cell v1.19.0
+   Compiling slab v0.4.9
+   Compiling getrandom v0.2.15
+   Compiling scopeguard v1.2.0
+   Compiling rustix v0.38.34
+   Compiling glob v0.3.1
+   Compiling bitflags v2.9.1
+   Compiling windows_x86_64_msvc v0.48.5
+   Compiling smallvec v1.15.1
+   Compiling futures-core v0.3.31
+   Compiling regex-automata v0.4.9
+   Compiling clang-sys v1.8.1
+   Compiling ring v0.17.14
+   Compiling thiserror v1.0.61
+   Compiling futures-sink v0.3.31
+   Compiling pin-project-lite v0.2.14
+   Compiling thiserror v2.0.17
+   Compiling minimal-lexical v0.2.1
+   Compiling libloading v0.8.4
+   Compiling nom v7.1.3
+   Compiling getrandom v0.3.2
+   Compiling simd-adler32 v0.3.7
+   Compiling parking_lot v0.12.3
+   Compiling anyhow v1.0.98
+   Compiling bytes v1.10.1
+   Compiling zstd-sys v2.0.11+zstd.1.5.6
+   Compiling num-traits v0.2.19
+   Compiling regex v1.11.1
+   Compiling rustls v0.23.28
+   Compiling lazy_static v1.5.0
+   Compiling subtle v2.6.1
+   Compiling pin-utils v0.1.0
+   Compiling rayon-core v1.12.1
+   Compiling bitflags v1.3.2
+   Compiling httparse v1.10.1
+   Compiling futures-channel v0.3.31
+   Compiling rustc-hash v1.1.0
+   Compiling lazycell v1.3.0
+   Compiling native-tls v0.2.12
+   Compiling adler2 v2.0.1
+   Compiling peeking_take_while v0.1.2
+   Compiling cexpr v0.6.0
+   Compiling miniz_oxide v0.8.9
+   Compiling winapi-util v0.1.8
+   Compiling errno v0.3.14
+   Compiling home v0.5.9
+   Compiling atty v0.2.14
+   Compiling autocfg v0.1.8
+   Compiling crc32fast v1.4.2
+   Compiling humantime v2.1.0
+   Compiling which v4.4.2
+   Compiling socket2 v0.5.10
+   Compiling mio v1.0.3
+   Compiling unicode-width v0.1.13
+   Compiling futures-io v0.3.31
+   Compiling rand_core v0.4.2
+   Compiling futures-task v0.3.31
+   Compiling textwrap v0.11.0
+   Compiling flate2 v1.1.9
+   Compiling termcolor v1.4.1
+   Compiling crypto-common v0.1.6
+   Compiling itoa v1.0.11
+   Compiling bindgen v0.59.2
+   Compiling vec_map v0.8.2
+   Compiling strsim v0.8.0
+   Compiling protobuf v3.7.2
+   Compiling clap v2.34.0
+   Compiling env_logger v0.9.3
+   Compiling proc-macro2 v0.4.30
+   Compiling byteorder v1.5.0
+   Compiling windows-targets v0.48.5
+   Compiling same-file v1.0.6
+   Compiling block-buffer v0.10.4
+   Compiling unicode-xid v0.1.0
+   Compiling equivalent v1.0.1
+   Compiling ppv-lite86 v0.2.17
+   Compiling hashbrown v0.14.5
+   Compiling fnv v1.0.7
+   Compiling rustls-pki-types v1.11.0
+   Compiling serde_derive v1.0.228
+   Compiling tokio-macros v2.5.0
+   Compiling futures-macro v0.3.31
+   Compiling thiserror-impl v1.0.61
+   Compiling thiserror-impl v2.0.17
+   Compiling digest v0.10.7
+   Compiling indexmap v2.2.6
+   Compiling walkdir v2.5.0
+   Compiling rand_core v0.3.1
+   Compiling crossbeam-epoch v0.9.18
+   Compiling rand_core v0.6.4
+   Compiling futures-util v0.3.31
+   Compiling syn v0.15.44
+   Compiling cpufeatures v0.2.12
+   Compiling windows-link v0.1.1
+   Compiling bytemuck v1.23.2
+   Compiling crossbeam-deque v0.8.5
+   Compiling libsodium-sys v0.2.7
+   Compiling protobuf-support v3.7.2
+   Compiling quote v0.6.13
+   Compiling percent-encoding v2.3.1
+   Compiling ntapi v0.4.1
+   Compiling fastrand v2.1.0
+   Compiling adler v1.0.2
+   Compiling zstd-safe v7.1.0
+   Compiling untrusted v0.9.0
+   Compiling tempfile v3.10.1
+   Compiling miniz_oxide v0.7.4
+   Compiling schannel v0.1.23
+   Compiling rand_pcg v0.1.2
+   Compiling rand_chacha v0.1.1
+   Compiling tinyvec_macros v0.1.1
+   Compiling serde_json v1.0.118
+   Compiling tinyvec v1.6.1
+   Compiling pin-project-internal v1.1.5
+   Compiling rand v0.6.5
+   Compiling fdeflate v0.3.4
+   Compiling backtrace v0.3.73
+   Compiling zeroize v1.8.1
+   Compiling siphasher v0.2.3
+   Compiling phf_shared v0.7.24
+   Compiling protobuf-parse v3.7.2
+   Compiling dlopen_derive v0.1.4
+   Compiling png v0.17.13
+   Compiling tokio v1.44.2
+   Compiling http v1.3.1
+   Compiling rustls-webpki v0.103.3
+   Compiling machine-uid v0.3.0 (https://github.com/rustdesk-org/machine-uid#381ff579)
+   Compiling protobuf-codegen v3.7.2
+   Compiling rayon v1.10.0
+   Compiling sha1 v0.10.6
+   Compiling rand_chacha v0.3.1
+   Compiling rand_hc v0.1.0
+   Compiling rand_isaac v0.1.1
+   Compiling rand_xorshift v0.1.1
+   Compiling windows-sys v0.48.0
+   Compiling rand_os v0.1.3
+   Compiling rand_jitter v0.1.4
+   Compiling rand v0.8.5
+   Compiling unicode-normalization v0.1.23
+   Compiling form_urlencoded v1.2.1
+   Compiling hbb_common v0.1.0 (C:\Users\lone\Documents\modularRustDesk\libs\hbb_common)
+   Compiling utf8parse v0.2.2
+   Compiling syn v1.0.109
+   Compiling anstyle v1.0.13
+   Compiling windows_x86_64_msvc v0.42.2
+   Compiling unicode-bidi v0.3.15
+   Compiling anstyle-wincon v3.0.3
+   Compiling anstyle-parse v0.2.4
+   Compiling phf_generator v0.7.24
+   Compiling rand_core v0.9.3
+   Compiling rustls-native-certs v0.8.1
+   Compiling idna v0.5.0
+   Compiling anstyle-query v1.1.0
+   Compiling crossbeam-channel v0.5.13
+   Compiling nasm-rs v0.3.0
+   Compiling colorchoice v1.0.1
+   Compiling is_terminal_polyfill v1.70.0
+   Compiling dasp_sample v0.11.0
+   Compiling base64 v0.22.1
+   Compiling dunce v1.0.5
+   Compiling mozjpeg-sys v2.2.2
+   Compiling tokio-rustls v0.26.0
+   Compiling tokio-native-tls v0.3.1
+   Compiling tokio-util v0.7.15
+   Compiling anstream v0.6.14
+   Compiling url v2.5.2
+   Compiling rand_chacha v0.9.0
+   Compiling phf_codegen v0.7.24
+   Compiling sha2 v0.10.8
+   Compiling async-recursion v1.1.1
+   Compiling windows-core v0.51.1
+   Compiling dirs-sys-next v0.1.2
+   Compiling ryu v1.0.18
+   Compiling windows v0.51.1
+   Compiling rand v0.9.2
+   Compiling target_build_utils v0.3.1
+   Compiling dlopen v0.1.8
+   Compiling toml_datetime v0.6.3
+   Compiling serde_spanned v0.6.6
+   Compiling futures-executor v0.3.30
+   Compiling num-traits v0.1.43
+   Compiling webpki-roots v1.0.4
+   Compiling webpki-roots v0.26.9
+   Compiling winreg v0.11.0
+   Compiling tracing-core v0.1.34
+   Compiling winnow v0.5.40
+   Compiling dtoa v0.4.8
+   Compiling itoa v0.3.4
+   Compiling arrayvec v0.7.6
+   Compiling serde v0.9.15
+   Compiling signature v1.6.4
+   Compiling utf-8 v0.7.6
+   Compiling data-encoding v2.9.0
+   Compiling ed25519 v1.5.3
+   Compiling futures v0.3.30
+   Compiling tungstenite v0.26.2
+   Compiling toml_edit v0.19.15
+   Compiling serde_json v0.9.10
+   Compiling directories-next v2.0.0
+   Compiling nu-ansi-term v0.49.0
+   Compiling dasp_frame v0.11.0
+   Compiling env_filter v0.1.3
+   Compiling http-body v1.0.1
+   Compiling pin-project v1.1.5
+   Compiling image v0.25.1
+   Compiling phf v0.7.24
+   Compiling toml v0.5.11
+   Compiling rgb v0.8.50
+   Compiling chrono v0.4.41
+   Compiling is-terminal v0.4.16
+   Compiling crossbeam-queue v0.3.11
+   Compiling spin v0.9.8
+   Compiling nanorand v0.7.0
+   Compiling prettyplease v0.2.20
+   Compiling rustc-demangle v0.1.24
+   Compiling env_logger v0.11.6
+   Compiling flexi_logger v0.27.4
+   Compiling flume v0.11.0
+   Compiling confy v0.4.0-2 (https://github.com/rustdesk-org/confy#83db9ec1)
+   Compiling tokio-socks v0.5.2-3 (https://github.com/rustdesk-org/tokio-socks#bdb9aa3d)
+   Compiling toml v0.7.8
+   Compiling tokio-tungstenite v0.26.2
+   Compiling zstd v0.13.1
+   Compiling sodiumoxide v0.2.7
+   Compiling dirs-next v2.0.0
+   Compiling rustls-platform-verifier v0.6.2
+   Compiling default_net v0.1.0 (https://github.com/rustdesk-org/default_net#78f8f70c)
+   Compiling uuid v1.16.0
+   Compiling tracing-attributes v0.1.29
+   Compiling socket2 v0.3.19
+   Compiling mac_address v1.1.7
+   Compiling filetime v0.2.23
+   Compiling try-lock v0.2.5
+   Compiling libm v0.2.8
+   Compiling windows_x86_64_msvc v0.53.1
+   Compiling tower-service v0.3.3
+   Compiling whoami v1.6.0
+   Compiling want v0.3.1
+   Compiling tracing v0.1.41
+   Compiling trackable_derive v1.0.0
+   Compiling windows-result v0.3.2
+   Compiling windows-strings v0.4.0
+   Compiling hmac v0.12.1
+   Compiling windows-implement v0.60.0
+   Compiling windows-interface v0.59.1
+   Compiling bindgen v0.71.1
+   Compiling bindgen v0.65.1
+   Compiling atomic-waker v1.1.2
+   Compiling windows_x86_64_msvc v0.34.0
+   Compiling rustversion v1.0.17
+   Compiling dasp_ring_buffer v0.11.0
+   Compiling weezl v0.1.8
+   Compiling windows-core v0.61.0
+   Compiling hyper v1.7.0
+   Compiling mozjpeg v0.10.11
+   Compiling trackable v1.3.0
+   Compiling nokhwa-core v0.1.5 (https://github.com/rustdesk-org/nokhwa.git?branch=fix_from_raw_parts#c2f74662)
+   Compiling windows-targets v0.42.2
+   Compiling jpeg-decoder v0.3.1
+   Compiling zune-inflate v0.2.54
+   Compiling bzip2-sys v0.1.11+1.0.8
+   Compiling webm-sys v1.0.4 (https://github.com/rustdesk-org/rust-webm#d2c4d3ac)
+   Compiling itertools v0.12.1
+   Compiling memoffset v0.6.5
+   Compiling half v2.4.1
+   Compiling unicode-segmentation v1.11.0
+   Compiling nokhwa-bindings-macos v0.2.2 (https://github.com/rustdesk-org/nokhwa.git?branch=fix_from_raw_parts#c2f74662)
+   Compiling zstd-safe v5.0.2+zstd.1.5.2
+   Compiling windows_x86_64_msvc v0.32.0
+   Compiling rustc-hash v2.1.1
+   Compiling ipnet v2.11.0
+   Compiling paste v1.0.15
+   Compiling color_quant v1.1.0
+   Compiling bit_field v0.10.2
+   Compiling lebe v0.5.2
+   Compiling error-code v3.2.0
+   Compiling gif v0.13.1
+   Compiling exr v1.72.0
+   Compiling hyper-util v0.1.17
+   Compiling tiff v0.9.1
+   Compiling windows-targets v0.53.5
+   Compiling trackable v0.2.24
+   Compiling dasp_rms v0.11.0
+   Compiling dasp_peak v0.11.0
+   Compiling windows v0.43.0
+   Compiling qoi v0.4.1
+   Compiling enum-map-derive v0.17.0
+   Compiling inout v0.1.3
+   Compiling sync_wrapper v1.0.2
+   Compiling serial-core v0.4.0
+   Compiling slotmap v1.0.7
+   Compiling windows-result v0.1.2
+   Compiling tfc v0.7.0 (https://github.com/rustdesk-org/The-Fat-Controller?branch=history%2Frebase_upstream_20240722#78bb80a8)
+   Compiling crc-catalog v2.4.0
+   Compiling compression-core v0.4.29
+   Compiling overload v0.1.1
+   Compiling cfg_aliases v0.2.1
+   Compiling powerfmt v0.2.0
+   Compiling tower-layer v0.3.3
+   Compiling base64ct v1.6.0
+   Compiling winreg v0.10.1
+   Compiling widestring v1.1.0
+   Compiling heck v0.4.1
+   Compiling password-hash v0.4.2
+   Compiling tower v0.5.2
+   Compiling deranged v0.3.11
+   Compiling softbuffer v0.4.5
+   Compiling strum_macros v0.24.3
+   Compiling compression-codecs v0.4.31
+   Compiling nu-ansi-term v0.46.0
+   Compiling crc v3.3.0
+   Compiling windows-core v0.54.0
+   Compiling serial-windows v0.4.0
+   Compiling enum-map v2.7.3
+   Compiling cipher v0.4.4
+   Compiling image v0.24.9
+   Compiling kcp-sys v0.1.0 (https://github.com/rustdesk-org/kcp-sys#32a6c09f)
+   Compiling dasp_envelope v0.11.0
+   Compiling windows v0.34.0
+   Compiling bytecodec v0.4.15
+   Compiling scrap v0.5.0 (C:\Users\lone\Documents\modularRustDesk\libs\scrap)
+   Compiling windows-sys v0.60.2
+   Compiling keyboard-types v0.7.0
+   Compiling core_maths v0.1.1
+   Compiling nokhwa-bindings-linux v0.1.1 (https://github.com/rustdesk-org/nokhwa.git?branch=fix_from_raw_parts#c2f74662)
+   Compiling winres v0.1.12
+   Compiling dasp_interpolate v0.11.0
+   Compiling magnum-opus v0.4.0 (https://github.com/rustdesk-org/magnum-opus#5cd2bf98)
+   Compiling http-body-util v0.1.3
+   Compiling tracing-log v0.2.0
+   Compiling dasp_window v0.11.1
+   Compiling os-version v0.2.0
+   Compiling zerocopy-derive v0.7.34
+   Compiling windows-implement v0.52.0
+   Compiling windows-interface v0.52.0
+   Compiling sharded-slab v0.1.7
+   Compiling num-integer v0.1.46
+   Compiling impersonate_system v0.1.0 (https://github.com/rustdesk-org/impersonate-system#2f429010)
+   Compiling clipboard v0.1.0 (C:\Users\lone\Documents\modularRustDesk\libs\clipboard)
+   Compiling thread_local v1.1.8
+   Compiling enigo v0.0.14 (C:\Users\lone\Documents\modularRustDesk\libs\enigo)
+   Compiling windows-core v0.52.0
+   Compiling dpi v0.1.1
+   Compiling iri-string v0.7.8
+   Compiling num-conv v0.1.0
+   Compiling time-core v0.1.2
+   Compiling strum v0.24.1
+   Compiling strsim v0.11.1
+   Compiling sysinfo v0.29.10 (https://github.com/rustdesk-org/sysinfo?branch=rlim_max#90b1705d)
+   Compiling strict-num v0.1.1
+   Compiling arrayref v0.3.9
+   Compiling clap_lex v0.7.6
+   Compiling utf8-width v0.1.7
+   Compiling cpal v0.15.3 (https://github.com/rustdesk-org/cpal?branch=osx-screencapturekit#6b374bca)
+   Compiling raw-window-handle v0.6.2
+   Compiling md5 v0.7.0
+   Compiling stun_codec v0.3.5
+   Compiling windows v0.52.0
+   Compiling tower-http v0.6.6
+   Compiling win-sys v0.3.1
+   Compiling html-escape v0.2.13
+   Compiling clap_builder v4.5.53
+   Compiling muda v0.17.1
+   Compiling tiny-skia-path v0.11.4
+   Compiling rdev v0.5.0-2 (https://github.com/rustdesk-org/rdev#f9b60b1d)
+   Compiling time v0.3.36
+   Compiling tracing-subscriber v0.3.19
+warning: direct cast of function item into an integer
+  --> libs\hbb_common\src\platform\mod.rs:80:62
+   |
+80 |         libc::signal(libc::SIGSEGV, breakdown_signal_handler as _);
+   |                                                              ^^^^
+   |
+   = note: `#[warn(function_casts_as_integer)]` on by default
+help: first cast to a pointer `as *const ()`
+   |
+80 |         libc::signal(libc::SIGSEGV, breakdown_signal_handler as *const () as _);
+   |                                                              ++++++++++++
+
+   Compiling num-bigint v0.4.6
+   Compiling zerocopy v0.7.34
+   Compiling dasp_signal v0.11.0
+   Compiling hyper-tls v0.6.0
+   Compiling ttf-parser v0.25.1
+   Compiling zstd v0.11.2+zstd.1.5.2
+   Compiling nokhwa-bindings-windows v0.4.2 (https://github.com/rustdesk-org/nokhwa.git?branch=fix_from_raw_parts#c2f74662)
+   Compiling windows v0.32.0
+   Compiling nix v0.25.1
+   Compiling windows v0.54.0
+   Compiling webm v1.1.0 (https://github.com/rustdesk-org/rust-webm#d2c4d3ac)
+   Compiling aes v0.8.4
+   Compiling bzip2 v0.4.4
+   Compiling serial v0.4.0
+   Compiling async-compression v0.4.32
+   Compiling pbkdf2 v0.11.0
+   Compiling hyper-rustls v0.27.7
+   Compiling clipboard-win v5.4.0
+   Compiling windows-win v3.0.0
+   Compiling windows-sys v0.45.0
+   Compiling windows v0.44.0
+   Compiling windows-collections v0.2.0
+   Compiling windows-future v0.2.0
+   Compiling windows-numerics v0.2.0
+   Compiling dasp_slice v0.11.0
+   Compiling serde_urlencoded v0.7.1
+   Compiling rtoolbox v0.0.2
+   Compiling dashmap v6.1.0
+   Compiling filedescriptor v0.8.2 (https://github.com/rustdesk-org/wezterm?branch=rustdesk%2Fpty_based_0.8.1#80174f80)
+   Compiling windows-strings v0.3.1
+   Compiling auto_impl v1.3.0
+   Compiling shared_library v0.1.9
+   Compiling quick-xml v0.30.0
+   Compiling windows-version v0.1.1
+   Compiling instant v0.1.13
+   Compiling shell-words v1.1.0
+   Compiling memmap2 v0.9.8
+   Compiling memalloc v0.1.0
+   Compiling base32 v0.4.0
+   Compiling constant_time_eq v0.2.6
+   Compiling downcast-rs v1.2.1
+   Compiling urlencoding v2.1.3
+   Compiling qrcodegen v1.8.0
+   Compiling num_cpus v1.16.0
+   Compiling constant_time_eq v0.1.5
+   Compiling debug-helper v0.3.13
+   Compiling zip v0.6.6
+   Compiling totp-rs v5.5.1
+   Compiling cidr-utils v0.5.11
+   Compiling portable-pty v0.8.1 (https://github.com/rustdesk-org/wezterm?branch=rustdesk%2Fpty_based_0.8.1#80174f80)
+   Compiling nokhwa v0.10.7 (https://github.com/rustdesk-org/nokhwa.git?branch=fix_from_raw_parts#c2f74662)
+   Compiling qrcode-generator v4.1.9
+   Compiling default-net v0.14.1
+   Compiling system_shutdown v4.0.1
+   Compiling fontdb v0.23.0
+   Compiling tauri-winrt-notification v0.1.3
+   Compiling remote_printer v0.1.0 (C:\Users\lone\Documents\modularRustDesk\libs\remote_printer)
+   Compiling windows-service v0.6.0
+   Compiling rpassword v7.3.1
+   Compiling tao v0.25.0 (https://github.com/rustdesk-org/tao?branch=dev#288c219c)
+   Compiling reqwest v0.12.24
+   Compiling dasp v0.11.0
+   Compiling windows v0.61.1
+   Compiling clipboard-master v4.0.0-beta.6 (https://github.com/rustdesk-org/clipboard-master#ddc39f00)
+   Compiling arboard v3.4.0 (https://github.com/rustdesk-org/arboard#85be1218)
+   Compiling virtual_display v0.1.0 (C:\Users\lone\Documents\modularRustDesk\libs\virtual_display)
+   Compiling runas v1.2.0
+   Compiling clap v4.5.53
+   Compiling tiny-skia v0.11.4
+   Compiling tray-icon v0.21.3 (https://github.com/tauri-apps/tray-icon#0a5835b0)
+   Compiling shared_memory v0.12.4
+   Compiling stunclient v0.4.1
+   Compiling fon v0.6.0
+   Compiling parity-tokio-ipc v0.7.3-6 (https://github.com/rustdesk-org/parity-tokio-ipc#d0ae39bf)
+   Compiling wallpaper v3.2.0 (https://github.com/rustdesk-org/wallpaper.rs#ce4a0cd3)
+   Compiling async-trait v0.1.80
+   Compiling serde_repr v0.1.19
+   Compiling repng v0.2.2
+   Compiling sciter-rs v0.5.57 (https://github.com/rustdesk-org/rust-sciter?branch=dyn#5322f3a7)
+   Compiling ctrlc v3.4.4
+   Compiling ringbuf v0.3.3
+warning: `hbb_common` (lib) generated 1 warning (1 duplicate)
+   Compiling rustdesk v1.4.6 (C:\Users\lone\Documents\modularRustDesk)
+   Compiling shutdown_hooks v0.1.0
+   Compiling hex v0.4.3
+   Compiling sys-locale v0.3.1
+   Compiling wol-rs v1.0.1
+warning: `hbb_common` (lib) generated 1 warning (run `cargo fix --lib -p hbb_common` to apply 1 suggestion)
+warning: unused import: `is_installed`
+  --> src\common.rs:42:69
+   |
+42 |     ui_interface::{get_api_server as ui_get_api_server, get_option, is_installed, set_option},
+   |                                                                     ^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `bail`
+  --> src\ui_cm_interface.rs:14:16
+   |
+14 |     allow_err, bail,
+   |                ^^^^
+
+warning: unused import: `uuid::Uuid`
+  --> src\ui_session_interface.rs:41:5
+   |
+41 | use uuid::Uuid;
+   |     ^^^^^^^^^^
+
+warning: use of deprecated function `hbb_common::base64::encode`: Use Engine::encode
+   --> src\hbbs_http\sync.rs:187:52
+    |
+187 |                         hash = hbb_common::base64::encode(&res[..]);
+    |                                                    ^^^^^^
+    |
+    = note: `#[warn(deprecated)]` on by default
+
+warning: variable does not need to be mutable
+   --> src\server\terminal_helper.rs:846:9
+    |
+846 |     let mut input_pipe = open_pipe(input_pipe_name, true)?;
+    |         ----^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> src\server\terminal_helper.rs:847:9
+    |
+847 |     let mut output_pipe = open_pipe(output_pipe_name, false)?;
+    |         ----^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> src\tray.rs:54:9
+   |
+54 |     let mut event_loop = EventLoopBuilder::new().build();
+   |         ----^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: constant `MOUSE_MOVE_PROTECTION_TIMEOUT` is never used
+   --> src\server\input_service.rs:487:7
+    |
+487 | const MOUSE_MOVE_PROTECTION_TIMEOUT: Duration = Duration::from_millis(1_000);
+    |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: constant `MOUSE_ACTIVE_DISTANCE` is never used
+   --> src\server\input_service.rs:489:7
+    |
+489 | const MOUSE_ACTIVE_DISTANCE: i32 = 5;
+    |       ^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `send_switch_login_request` is never used
+    --> src\client.rs:3729:10
+     |
+3729 | async fn send_switch_login_request(
+     |          ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: methods `read_empty_dirs`, `set_confirm_override_file`, and `rename_file` are never used
+   --> src\client\file_trait.rs:58:8
+    |
+  5 | pub trait FileManager: Interface {
+    |           ----------- methods in this trait
+...
+ 58 |     fn read_empty_dirs(&self, path: String, include_hidden: bool) {
+    |        ^^^^^^^^^^^^^^^
+...
+168 |     fn set_confirm_override_file(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+190 |     fn rename_file(&self, act_id: i32, path: String, new_name: String, is_remote: bool) {
+    |        ^^^^^^^^^^^
+
+warning: function `query_online_states` is never used
+    --> src\client.rs:4099:18
+     |
+4099 |     pub async fn query_online_states<F: FnOnce(Vec<String>, Vec<String>)>(ids: Vec<String>, f: F) {
+     |                  ^^^^^^^^^^^^^^^^^^^
+
+warning: function `create_online_stream` is never used
+    --> src\client.rs:4119:14
+     |
+4119 |     async fn create_online_stream() -> ResultType<Stream> {
+     |              ^^^^^^^^^^^^^^^^^^^^
+
+warning: function `query_online_states_` is never used
+    --> src\client.rs:4134:14
+     |
+4134 |     async fn query_online_states_(
+     |              ^^^^^^^^^^^^^^^^^^^^
+
+warning: methods `http_request` and `get_http_status` are never used
+   --> src\ui.rs:614:8
+    |
+198 | impl UI {
+    | ------- methods in this implementation
+...
+614 |     fn http_request(&self, url: String, method: String, body: Option<String>, header: String) {
+    |        ^^^^^^^^^^^^
+...
+630 |     fn get_http_status(&self, url: String) -> Option<String> {
+    |        ^^^^^^^^^^^^^^^
+
+warning: methods `into_string` and `save` are never used
+   --> src\auth_2fa.rs:123:8
+    |
+122 | impl TelegramBot {
+    | ---------------- methods in this implementation
+123 |     fn into_string(&self) -> ResultType<String> {
+    |        ^^^^^^^^^^^
+...
+133 |     fn save(&self) -> ResultType<()> {
+    |        ^^^^
+
+warning: function `get_chatid_telegram` is never used
+   --> src\auth_2fa.rs:165:8
+    |
+165 | pub fn get_chatid_telegram(bot_token: &str) -> ResultType<Option<String>> {
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: static `CONTROLLING_SESSION_COUNT` is never used
+  --> src\updater.rs:23:8
+   |
+23 | static CONTROLLING_SESSION_COUNT: AtomicUsize = AtomicUsize::new(0);
+   |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `update_controlling_session_count` is never used
+  --> src\updater.rs:27:8
+   |
+27 | pub fn update_controlling_session_count(count: usize) {
+   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `http_request` is never used
+   --> src\ui_interface.rs:859:8
+    |
+859 | pub fn http_request(url: String, method: String, body: Option<String>, header: String) {
+    |        ^^^^^^^^^^^^
+
+warning: function `get_async_http_status` is never used
+   --> src\ui_interface.rs:879:8
+    |
+879 | pub fn get_async_http_status(url: String) -> Option<String> {
+    |        ^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `has_valid_bot` is never used
+    --> src\ui_interface.rs:1526:8
+     |
+1526 | pub fn has_valid_bot() -> bool {
+     |        ^^^^^^^^^^^^^
+
+warning: function `verify_bot` is never used
+    --> src\ui_interface.rs:1530:8
+     |
+1530 | pub fn verify_bot(token: String) -> String {
+     |        ^^^^^^^^^^
+
+warning: enum `HbbHttpResponse` is never used
+  --> src\hbbs_http.rs:17:10
+   |
+17 | pub enum HbbHttpResponse<T> {
+   |          ^^^^^^^^^^^^^^^
+
+warning: associated function `parse` is never used
+  --> src\hbbs_http.rs:25:12
+   |
+24 | impl<T: DeserializeOwned> HbbHttpResponse<T> {
+   | -------------------------------------------- associated function in this implementation
+25 |     pub fn parse(body: &str) -> ResultType<Self> {
+   |            ^^^^^
+
+warning: struct `DownloadData` is never constructed
+  --> src\hbbs_http\downloader.rs:26:12
+   |
+26 | pub struct DownloadData {
+   |            ^^^^^^^^^^^^
+
+warning: struct `Downloader` is never constructed
+  --> src\hbbs_http\downloader.rs:38:8
+   |
+38 | struct Downloader {
+   |        ^^^^^^^^^^
+
+warning: function `download_file` is never used
+  --> src\hbbs_http\downloader.rs:50:8
+   |
+50 | pub fn download_file(
+   |        ^^^^^^^^^^^^^
+
+warning: function `do_download` is never used
+   --> src\hbbs_http\downloader.rs:163:10
+    |
+163 | async fn do_download(
+    |          ^^^^^^^^^^^
+
+warning: function `get_download_data` is never used
+   --> src\hbbs_http\downloader.rs:274:8
+    |
+274 | pub fn get_download_data(id: &str) -> ResultType<DownloadData> {
+    |        ^^^^^^^^^^^^^^^^^
+
+warning: function `cancel` is never used
+   --> src\hbbs_http\downloader.rs:299:8
+    |
+299 | pub fn cancel(id: &str) {
+    |        ^^^^^^
+
+warning: function `remove` is never used
+   --> src\hbbs_http\downloader.rs:307:8
+    |
+307 | pub fn remove(id: &str) {
+    |        ^^^^^^
+
+warning: function `create_http_client_async_with_url` is never used
+   --> src\hbbs_http\http_client.rs:232:14
+    |
+232 | pub async fn create_http_client_async_with_url(url: &str) -> AsyncClient {
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `create_http_client_async_with_url_` is never used
+   --> src\hbbs_http\http_client.rs:251:10
+    |
+251 | async fn create_http_client_async_with_url_(
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rustdesk` (lib) generated 34 warnings (run `cargo fix --lib -p rustdesk` to apply 6 suggestions)
+error: could not compile `rustdesk` (lib); 34 warnings emitted
+
+Caused by:
+  process didn't exit successfully: `C:\Users\lone\.rustup\toolchains\stable-x86_64-pc-windows-msvc\bin\rustc.exe --crate-name librustdesk --edition=2021 src\lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type cdylib --crate-type staticlib --crate-type rlib --emit=dep-info,link -C opt-level=3 -C panic=abort -C codegen-units=1 --cfg "feature=\"dasp\"" --cfg "feature=\"default\"" --cfg "feature=\"use_dasp\"" --check-cfg cfg(docsrs,test) --check-cfg "cfg(feature, values(\"cli\", \"dasp\", \"default\", \"flutter\", \"flutter_rust_bridge\", \"hwcodec\", \"inline\", \"linux-pkg-config\", \"mediacodec\", \"plugin_framework\", \"rubato\", \"samplerate\", \"screencapturekit\", \"unix-file-copy-paste\", \"use_dasp\", \"use_rubato\", \"use_samplerate\", \"vram\"))" -C metadata=58a9900fe015a8ce -C rpath --out-dir C:\Users\lone\Documents\modularRustDesk\target\release\deps -C strip=symbols -L dependency=C:\Users\lone\Documents\modularRustDesk\target\release\deps --extern arboard=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libarboard-6e27a2bd9c35ece4.rlib --extern async_trait=C:\Users\lone\Documents\modularRustDesk\target\release\deps\async_trait-a659814c22df1118.dll --extern bytemuck=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libbytemuck-9ef9683b65d6e48d.rlib --extern bytes=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libbytes-2a4da33a39bcd031.rlib --extern cfg_if=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libcfg_if-53c531ac1051f802.rlib --extern chrono=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libchrono-b50f1ff2c7a338b4.rlib --extern cidr_utils=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libcidr_utils-9d9c8415c0f2af3c.rlib --extern clap=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libclap-e114d9d7296ea2b7.rlib --extern clipboard=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libclipboard-cbc37024a8abf409.rlib --extern clipboard_master=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libclipboard_master-050ae931df762b00.rlib --extern cpal=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libcpal-88745b9a36e80dab.rlib --extern crossbeam_queue=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libcrossbeam_queue-fb04c107271428d0.rlib --extern ctrlc=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libctrlc-a631dd50c4c2d07a.rlib --extern dasp=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libdasp-7ca1a9a9996ae59b.rlib --extern default_net=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libdefault_net-648b627ed69d4078.rlib --extern enigo=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libenigo-404a077aab9a55de.rlib --extern errno=C:\Users\lone\Documents\modularRustDesk\target\release\deps\liberrno-a3cf909e96e48839.rlib --extern fon=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libfon-dfe0c38c2c645d47.rlib --extern fontdb=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libfontdb-d5da9156e1220abe.rlib --extern hbb_common=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libhbb_common-12c894157ca2bdbc.rlib --extern hex=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libhex-78343f9aed158e5c.rlib --extern image=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libimage-604e1441ed6380f3.rlib --extern impersonate_system=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libimpersonate_system-4d9ebd2f8b486600.rlib --extern kcp_sys=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libkcp_sys-81f46ed38079e4c6.rlib --extern lazy_static=C:\Users\lone\Documents\modularRustDesk\target\release\deps\liblazy_static-a062ff7daa23fa2d.rlib --extern mac_address=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libmac_address-94aa914a2b716507.rlib --extern magnum_opus=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libmagnum_opus-d19d3eaf59b68fcc.rlib --extern num_cpus=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libnum_cpus-26eeb305e6340a1b.rlib --extern parity_tokio_ipc=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libparity_tokio_ipc-8cd7efa5e9ac698d.rlib --extern portable_pty=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libportable_pty-29a9ab34b16d66ed.rlib --extern qrcode_generator=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libqrcode_generator-1d4e9020753feb85.rlib --extern rdev=C:\Users\lone\Documents\modularRustDesk\target\release\deps\librdev-d6113ea62dab2ca8.rlib --extern remote_printer=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libremote_printer-791c78a988c1df41.rlib --extern repng=C:\Users\lone\Documents\modularRustDesk\target\release\deps\librepng-bc7b390efdf006ce.rlib --extern reqwest=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libreqwest-6501a50197a5a79c.rlib --extern ringbuf=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libringbuf-134483d3534b1738.rlib --extern rpassword=C:\Users\lone\Documents\modularRustDesk\target\release\deps\librpassword-24f55391de90c9b0.rlib --extern runas=C:\Users\lone\Documents\modularRustDesk\target\release\deps\librunas-3fe9c25c1ca3c69f.rlib --extern sciter=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libsciter-8cbde330b026cae9.rlib --extern scrap=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libscrap-88ec4c65ad95cf22.rlib --extern serde=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libserde-a9471052da452fdb.rlib --extern serde_derive=C:\Users\lone\Documents\modularRustDesk\target\release\deps\serde_derive-c82fecb38d05a739.dll --extern serde_json=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libserde_json-33ac83d20566ed85.rlib --extern serde_repr=C:\Users\lone\Documents\modularRustDesk\target\release\deps\serde_repr-c02714f4225ff735.dll --extern sha2=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libsha2-d5bb1431353ca952.rlib --extern shared_memory=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libshared_memory-5ebd3e0d4096373e.rlib --extern shutdown_hooks=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libshutdown_hooks-d4d4866ddc302109.rlib --extern softbuffer=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libsoftbuffer-b9c7f07af5794561.rlib --extern stunclient=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libstunclient-3eada43d4ce00177.rlib --extern sys_locale=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libsys_locale-4535c1dba7634974.rlib --extern system_shutdown=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libsystem_shutdown-68e8620ce29236e6.rlib --extern tao=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libtao-0e8581049a4a0bd8.rlib --extern tauri_winrt_notification=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libtauri_winrt_notification-cc1c139064e29854.rlib --extern tiny_skia=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libtiny_skia-8f786619121c21fa.rlib --extern totp_rs=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libtotp_rs-3aa5a6871405fa7b.rlib --extern tray_icon=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libtray_icon-9a4b8b48e51fe899.rlib --extern ttf_parser=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libttf_parser-8ba252df2355f486.rlib --extern url=C:\Users\lone\Documents\modularRustDesk\target\release\deps\liburl-d607ffc439e240ad.rlib --extern uuid=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libuuid-1a7e8bf129213d9a.rlib --extern virtual_display=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libvirtual_display-ada61aa0f2601777.rlib --extern wallpaper=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libwallpaper-76179861e4e5a947.rlib --extern winapi=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libwinapi-c057afe031c2c8e9.rlib --extern windows=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libwindows-110f0c70b2ad1b1b.rlib --extern windows_service=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libwindows_service-1699a7e0d74364a0.rlib --extern winreg=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libwinreg-ad4e5fab3b2e34c5.rlib --extern wol=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libwol-ddb9152f47dcc38a.rlib --extern zip=C:\Users\lone\Documents\modularRustDesk\target\release\deps\libzip-37b2131b0ce0cd0f.rlib -Ctarget-feature=+crt-static -L native=C:\Users\lone\Documents\modularRustDesk\target\release\build\rustdesk-0b2ce3d6da1e605f\out -L native=C:\Users\lone\Documents\modularRustDesk\target\release\build\clipboard-cc3625ae6fee679f\out -L native=C:\Users\lone\Documents\modularRustDesk\target\release\build\machine-uid-850d54aef0194ebe\out -L native=C:\Users\lone\Documents\modularRustDesk\target\release\build\ring-f396867db923fb4c\out -L native=C:\Users\lone\Documents\modularRustDesk\target\release\build\zstd-sys-4e638d128aa44580\out -L native=C:\Users\lone\Documents\modularRustDesk\target\release\build\impersonate_system-411a4e519432ec4a\out -L native=C:\Users\lone\Documents\modularRustDesk\target\release\build\kcp-sys-8832d5d054efb1aa\out -L native=C:\Users\lone\Documents\modularRustDesk\target\release\build\mozjpeg-sys-8d93882a4f9fffde\out -L native=C:\Users\lone\Documents\modularRustDesk\target\release\build\webm-sys-0f9815189b23b294\out -L native=C:\Users\lone\Documents\modularRustDesk\target\release\build\bzip2-sys-97943a23e40fe4b7\out\lib -L native=C:\Users\lone\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\windows_x86_64_msvc-0.48.5\lib -L native=C:\Users\lone\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\windows_x86_64_msvc-0.52.6\lib -L native=C:\Users\lone\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\libsodium-sys-0.2.7\msvc/x64/Release/v142/ -L native=C:\Users\lone\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\windows_x86_64_msvc-0.32.0\lib -L native=C:\Users\lone\.cargo\git\checkouts\kcp-sys-a97dc6603837a17f\32a6c09\kcp -L "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\vcpkg\installed\x64-windows-static\lib" -L "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\vcpkg\installed\x64-windows-static\lib" -L "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\vcpkg\installed\x64-windows-static\lib" -L "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\vcpkg\installed\x64-windows-static\lib" -L "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\vcpkg\installed\x64-windows-static\lib" -L native=C:\Users\lone\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\windows_x86_64_msvc-0.42.2\lib -L native=C:\Users\lone\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\windows_x86_64_msvc-0.34.0\lib -L native=C:\Users\lone\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\windows_x86_64_msvc-0.53.1\lib -l static=windows -l WtsApi32` (exit code: 0xffffffff)

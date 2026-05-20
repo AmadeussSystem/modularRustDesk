@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  hbbs:
+    container_name: hbbs
+    image: rustdesk/rustdesk-server:latest
+    # Replace <RELAY_HOST> with your server's public IP or internal LAN IP
+    command: hbbs -r <RELAY_HOST>
+    volumes:
+      - ./data:/root
+    network_mode: host
+    restart: unless-stopped
+
+  hbbr:
+    container_name: hbbr
+    image: rustdesk/rustdesk-server:latest
+    command: hbbr
+    volumes:
+      - ./data:/root
+    network_mode: host
+    restart: unless-stopped
+
+  nginx:
+    container_name: nginx-relay
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./certs:/etc/nginx/certs:ro
+    network_mode: host
+    restart: unless-stopped
+    depends_on:
+      - hbbs
+      - hbbr

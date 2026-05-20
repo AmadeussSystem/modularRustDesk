@@ -691,7 +691,7 @@ mod tests {
         use std::os::unix::fs::symlink;
 
         let unique = format!(
-            "rustdesk-ipc-pid-file-test-{}-{}",
+            "app-ipc-pid-file-test-{}-{}",
             std::process::id(),
             std::time::SystemTime::now()
                 .duration_since(std::time::UNIX_EPOCH)

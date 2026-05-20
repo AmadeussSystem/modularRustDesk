@@ -321,11 +321,20 @@ async fn create_relay_connection_(
     ipv4: bool,
     control_permissions: Option<ControlPermissions>,
 ) -> ResultType<()> {
-    let mut stream = socket_client::connect_tcp(
-        socket_client::ipv4_to_ipv6(crate::check_port(relay_server, RELAY_PORT), ipv4),
-        CONNECT_TIMEOUT,
-    )
-    .await?;
+    let relay_target = if hbb_common::config::use_ws() {
+        hbb_common::websocket::check_ws_relay(&relay_server)
+    } else {
+        socket_client::ipv4_to_ipv6(crate::check_port(relay_server, RELAY_PORT), ipv4)
+    };
+    println!(
+        "DEBUG: create_relay_connection -> connecting to {}",
+        relay_target
+    );
+    log::info!(
+        "DEBUG: create_relay_connection -> connecting to {}",
+        relay_target
+    );
+    let mut stream = socket_client::connect_tcp(relay_target, CONNECT_TIMEOUT).await?;
     let mut msg_out = RendezvousMessage::new();
     let licence_key = crate::get_key(true).await;
     msg_out.set_request_relay(RequestRelay {
@@ -834,7 +843,7 @@ pub async fn stop_main_window_process() {
     #[cfg(windows)]
     {
         // in case above failure, e.g. zombie process
-        if let Err(e) = crate::platform::try_kill_rustdesk_main_window_process() {
+        if let Err(e) = crate::platform::try_kill_main_window_process() {
             log::error!("kill failed: {}", e);
         }
     }

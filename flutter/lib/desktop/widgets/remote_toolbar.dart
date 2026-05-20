@@ -876,7 +876,7 @@ class ScreenAdjustor {
   }
 
   _getScreenInfoDesktop() async {
-    final v = await rustDeskWinManager.call(
+    final v = await appWinManager.call(
         WindowType.Main, kWindowGetWindowInfo, '');
     return v.result;
   }

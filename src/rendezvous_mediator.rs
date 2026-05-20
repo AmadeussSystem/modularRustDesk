@@ -293,8 +293,56 @@ impl RendezvousMediator {
                     Ok(register_pk_response::Result::UUID_MISMATCH) => {
                         self.handle_uuid_mismatch(sink).await?;
                     }
-                    _ => {
-                        log::error!("unknown RegisterPkResponse");
+                    Ok(register_pk_response::Result::ID_EXISTS) => {
+                        log::error!(
+                            "RegisterPkResponse::ID_EXISTS received from {} for id {}",
+                            self.host,
+                            Config::get_id()
+                        );
+                        Config::set_key_confirmed(false);
+                        Config::set_host_key_confirmed(&self.host_prefix, false);
+                    }
+                    Ok(register_pk_response::Result::TOO_FREQUENT) => {
+                        log::warn!(
+                            "RegisterPkResponse::TOO_FREQUENT received from {}",
+                            self.host
+                        );
+                    }
+                    Ok(register_pk_response::Result::INVALID_ID_FORMAT) => {
+                        log::error!(
+                            "RegisterPkResponse::INVALID_ID_FORMAT received from {} for id {}",
+                            self.host,
+                            Config::get_id()
+                        );
+                        Config::set_key_confirmed(false);
+                        Config::set_host_key_confirmed(&self.host_prefix, false);
+                    }
+                    Ok(register_pk_response::Result::NOT_SUPPORT) => {
+                        log::error!(
+                            "RegisterPkResponse::NOT_SUPPORT received from {}; register_pk is not supported by this rendezvous path",
+                            self.host
+                        );
+                        Config::set_key_confirmed(false);
+                        Config::set_host_key_confirmed(&self.host_prefix, false);
+                    }
+                    Ok(register_pk_response::Result::SERVER_ERROR) => {
+                        log::error!(
+                            "RegisterPkResponse::SERVER_ERROR received from {}",
+                            self.host
+                        );
+                        Config::set_key_confirmed(false);
+                        Config::set_host_key_confirmed(&self.host_prefix, false);
+                    }
+                    Ok(register_pk_response::Result::NOT_DEPLOYED) => {
+                        log::warn!(
+                            "RegisterPkResponse::NOT_DEPLOYED received from {}",
+                            self.host
+                        );
+                        Config::set_key_confirmed(false);
+                        Config::set_host_key_confirmed(&self.host_prefix, false);
+                    }
+                    Err(err) => {
+                        log::error!("invalid RegisterPkResponse result: {:?}", err);
                     }
                 }
                 if rpr.keep_alive > 0 {

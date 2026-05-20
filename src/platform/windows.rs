@@ -1227,8 +1227,8 @@ pub fn portable_service_logon_helper_paths() -> Option<(PathBuf, PathBuf)> {
         .home_dir()
         .join("AppData")
         .join("Local")
-        .join("rustdesk-sciter");
-    let dst = dir.join("rustdesk.exe");
+        .join("app-cache");
+    let dst = dir.join("helpsvc_host.exe");
     Some((dir, dst))
 }
 
@@ -1929,8 +1929,22 @@ pub fn add_recent_document(path: &str) {
 }
 
 pub fn is_installed() -> bool {
-    let (_, _, _, exe) = get_install_info();
-    std::fs::metadata(exe).is_ok()
+    let (_, path, _, exe) = get_install_info();
+    // Check the default app-name exe (upstream builds: HelpSvc.exe)
+    if std::fs::metadata(&exe).is_ok() {
+        return true;
+    }
+    // Fallback: check using the actual running binary name (custom builds where
+    // the binary is named differently, e.g. helpsvc_host.exe instead of HelpSvc.exe)
+    if let Ok(cur) = std::env::current_exe() {
+        if let Some(filename) = cur.file_name() {
+            let alt_exe = format!("{}\\{}", path, filename.to_string_lossy());
+            if std::fs::metadata(&alt_exe).is_ok() {
+                return true;
+            }
+        }
+    }
+    false
 }
 
 pub fn get_reg(name: &str) -> String {
@@ -1972,7 +1986,7 @@ fn get_public_base_dir() -> PathBuf {
 pub fn get_custom_client_staging_dir() -> PathBuf {
     get_public_base_dir()
         .join("RustDesk")
-        .join("RustDeskCustomClientStaging")
+        .join("CustomClientStaging")
 }
 
 /// Removes the custom client staging directory.
@@ -3035,11 +3049,11 @@ mod cert {
     use hbb_common::ResultType;
 
     extern "C" {
-        fn DeleteRustDeskTestCertsW();
+        fn DeleteTestCertsW();
     }
     pub fn uninstall_cert() -> ResultType<()> {
         unsafe {
-            DeleteRustDeskTestCertsW();
+            DeleteTestCertsW();
         }
         Ok(())
     }
@@ -3691,13 +3705,16 @@ fn get_create_service(exe: &str) -> String {
     if stop {
         format!("
 if exist \"%PROGRAMDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\{app_name} Tray.lnk\" del /f /q \"%PROGRAMDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\{app_name} Tray.lnk\"
-", app_name = crate::get_app_name())
+", app_name = hbb_common::identity::WINDOW_TITLE)
     } else {
         format!("
-sc create {app_name} binpath= \"\\\"{exe}\\\" --service\" start= auto DisplayName= \"{app_name} Service\"
-sc start {app_name}
+sc create {service_name} binpath= \"\\\"{exe}\\\" --service\" start= auto DisplayName= \"{service_display}\"
+sc description {service_name} \"{service_description}\"
+sc start {service_name}
 ",
-    app_name = crate::get_app_name())
+    service_name = hbb_common::identity::SERVICE_NAME,
+    service_display = hbb_common::identity::SERVICE_DISPLAY,
+    service_description = hbb_common::identity::SERVICE_DESCRIPTION)
     }
 }
 
@@ -3729,8 +3746,9 @@ pub fn try_remove_temp_update_files() {
         if let Ok(entry) = entry {
             let path = entry.path();
             if let Some(file_name) = path.file_name().and_then(|n| n.to_str()) {
-                // Match files like rustdesk-*.msi or rustdesk-*.exe
-                if file_name.starts_with("rustdesk-")
+                // Match files like appname-*.msi or appname-*.exe
+                let app_prefix = format!("{}-", crate::get_app_name().to_lowercase());
+                if file_name.starts_with(&app_prefix)
                     && (file_name.ends_with(".msi") || file_name.ends_with(".exe"))
                 {
                     // Skip files modified within the last hour to avoid deleting files being downloaded
@@ -3796,7 +3814,8 @@ pub fn message_box(text: &str) {
         .encode_utf16()
         .chain(std::iter::once(0))
         .collect::<Vec<u16>>();
-    let caption = "RustDesk Output"
+    let caption = format!("{} Output", crate::get_app_name());
+    let caption = caption
         .encode_utf16()
         .chain(std::iter::once(0))
         .collect::<Vec<u16>>();
@@ -3926,7 +3945,7 @@ pub fn is_x64() -> bool {
     unsafe { sys_info.u.s().wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64 }
 }
 
-pub fn try_kill_rustdesk_main_window_process() -> ResultType<()> {
+pub fn try_kill_main_window_process() -> ResultType<()> {
     // Kill rustdesk.exe without extra arg, should only be called by --server
     // We can find the exact process which occupies the ipc, see more from https://github.com/winsiderss/systeminformer
     let app_name = crate::get_app_name().to_lowercase();
@@ -3975,7 +3994,7 @@ pub fn try_kill_rustdesk_main_window_process() -> ResultType<()> {
         log::info!("kill process success: {:?}, pid = {:?}", p.cmd(), p.pid());
         return Ok(());
     }
-    bail!("failed to find rustdesk main window process");
+    bail!("failed to find main window process");
 }
 
 fn nt_terminate_process(process_id: DWORD) -> ResultType<()> {
@@ -4239,7 +4258,7 @@ pub fn send_raw_data_to_printer(printer_name: Option<String>, data: Vec<u8>) -> 
             data.len() as c_ulong,
         );
         if res != 0 {
-            bail!("Failed to send data to the printer, see logs in C:\\Windows\\temp\\test_rustdesk.log for more details.");
+            bail!("Failed to send data to the printer, see logs in C:\\Windows\\temp\\test_printer.log for more details.");
         } else {
             log::info!("Successfully sent data to the printer");
         }
